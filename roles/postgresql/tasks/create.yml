@@ -1,0 +1,17 @@
+---
+- name: create role
+  postgresql_db:
+    name: "vagrant"
+    encoding: "UTF-8"
+    login_user: postgres
+  sudo_user: postgres
+  sudo: yes
+
+- name: create role
+  postgresql_user:
+    db: "vagrant"
+    name: "vagrant"
+    state: present
+    login_user: postgres
+  sudo_user: postgres
+  sudo: yes

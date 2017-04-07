@@ -1,0 +1,9 @@
+---
+- include: install.yml
+  become: yes
+
+- include: init.yml
+
+- include: setting.yml
+
+- include: create.yml

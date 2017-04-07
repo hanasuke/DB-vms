@@ -1,0 +1,18 @@
+---
+- name: install postgresql rpm
+  yum: name=https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm state=present
+
+- name: install postgresql
+  yum: name={{item}} state=latest
+  with_items:
+    - postgresql96
+    - postgresql96-devel
+    - postgresql96-libs
+    - postgresql96-server
+    - postgresql96-contrib
+    - python-psycopg2
+
+- name: enable postgresql
+  service:
+    name: postgresql-9.6
+    enabled: yes

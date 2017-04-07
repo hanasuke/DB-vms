@@ -1,0 +1,12 @@
+---
+- name: replace pg_hba.conf
+  copy:
+    src: pg_hba.conf
+    dest: /var/lib/pgsql/9.6/data/
+    owner: postgres
+    group: postgres
+    mode: 0644
+
+- name: reload postgresql
+  service: name=postgresql-9.6 state=reloaded
+  become: yes
