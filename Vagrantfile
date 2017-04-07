@@ -15,10 +15,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
 
   # network configuration
-  config.vm.network "public_network", ip: "192.168.100.2"
-  config.vm.network "forwarded_port", guest:   22, host: 10022, id: "ssh"
-  config.vm.network "forwarded_port", guest: 5432, host: 15432, id: "psql"
-  config.vm.network "forwarded_port", guest: 3306, host: 13306, id: "mysql"
+  config.vm.network :private_network, ip: "192.168.100.2"
+  config.vm.network :forwarded_port, guest:   22, host: 10022, id: "ssh"
+  config.vm.network :forwarded_port, guest: 5432, host: 15432, id: "psql"
+  config.vm.network :forwarded_port, guest: 3306, host: 13306, id: "mysql"
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
