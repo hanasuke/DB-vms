@@ -1,0 +1,12 @@
+---
+- name: update yum
+  yum: name=* state=latest
+
+- name: set path to sudo users
+  replace: >
+     dest=/etc/sudoers
+      regexp="^Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin$"
+      replace="Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin"
+
+- name: install 'development tools'
+  yum: name="@Development tools" state=present

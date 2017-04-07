@@ -1,0 +1,6 @@
+---
+- name: update some packages
+  hosts: all
+  become: yes
+  roles:
+    - common
