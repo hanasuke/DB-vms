@@ -1,0 +1,23 @@
+---
+- name: install redis from remi
+  yum:
+    name: redis
+    enablerepo: remi
+
+- name: enable redis
+  service:
+    name: redis
+    enabled: yes
+
+- name: set config file
+  copy:
+    src: redis.conf
+    dest: /etc/
+    owner: redis
+    group: root
+    mode: 0640
+
+- name: start redis
+  service:
+    name: redis
+    state: started
