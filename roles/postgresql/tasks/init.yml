@@ -6,7 +6,7 @@
 - name: postgresql initdb
   shell: /usr/pgsql-9.6/bin/postgresql96-setup initdb
   become: yes
-  when: is_exists.stat.md5 is not defined
+  when: not is_exists.stat.exists
 
 - name: postgresql start
   service: name=postgresql-9.6 state=started
