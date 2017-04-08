@@ -16,5 +16,6 @@
     backup: yes
 
 - name: restart postgresql
-  service: name=postgresql-9.6 state=restarted
-  become: yes
+  service:
+    name: postgresql-9.6
+    state: restarted
