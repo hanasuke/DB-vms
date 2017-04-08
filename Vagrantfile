@@ -16,9 +16,6 @@ Vagrant.configure("2") do |config|
 
   # network configuration
   config.vm.network :private_network, ip: "192.168.100.2"
-  config.vm.network :forwarded_port, guest:   22, host: 10022, id: "ssh"
-  config.vm.network :forwarded_port, guest: 5432, host: 15432, id: "psql"
-  config.vm.network :forwarded_port, guest: 3306, host: 13306, id: "mysql"
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -42,9 +39,9 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
      vb.gui = false
+     vb.memory = "2048"
   #
   #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
   end
   #
   # View the documentation for the provider you are using for more
