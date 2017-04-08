@@ -1,12 +1,20 @@
 ---
+- name: change connection setting
+  replace:
+    dest: /var/lib/pgsql/9.6/data/postgresql.conf
+    regexp: '^#listen_addresses(\s+.*)?$'
+    replace: "listen_addresses = '*'"
+    backup: yes
+
 - name: replace pg_hba.conf
   copy:
     src: pg_hba.conf
     dest: /var/lib/pgsql/9.6/data/
     owner: postgres
     group: postgres
-    mode: 0644
+    mode: 0600
+    backup: yes
 
-- name: reload postgresql
-  service: name=postgresql-9.6 state=reloaded
+- name: restart postgresql
+  service: name=postgresql-9.6 state=restarted
   become: yes
