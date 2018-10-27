@@ -1,0 +1,10 @@
+version: '3'
+services:
+  redis:
+    image: redis:5.0.0
+    ports:
+      - 16379:6379
+  postgresql:
+    image: postgres:9.6
+    ports:
+      - 15432:5432

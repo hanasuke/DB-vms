@@ -9,20 +9,21 @@ CentOS7のVMにPostgreSQLとRedisを突っ込んで、ホストマシンから�
 - Redis 3.2.x
 
 
-## 起動方法
+## Vagrant版
+### 起動方法
 
 ```
 $ vagrant up
 $ ansible-playbook site.yml
 ```
 
-## 使い方
+### 使い方
 
 ホストマシンとプライベートネットワークを作っています。
 IPアドレスは`192.168.100.2`です。
 ホストマシンからCLIで利用するときはホストマシンにライブラリを入れておく必要があります。
 
-### PostgreSQL
+#### PostgreSQL
 
 CLIの場合、ホストマシンから以下のコマンドで接続できます。
 
@@ -30,12 +31,30 @@ CLIの場合、ホストマシンから以下のコマンドで接続できま�
 $ psql -h 192.168.100.2 -U vagrant
 ```
 
-### Redis
+#### Redis
 
 CLIの場合、ホストマシンから以下のコマンドで接続できます。
 
 ```
 $ redis-cli -h 192.168.100.2
+```
+
+## docker-compose版
+### 起動方法
+```
+docker-compose up
+```
+
+### 使い方
+#### postgresql
+```
+$ psql -h localhost -p 15432
+```
+
+#### redis
+
+```
+redis-cli -h localhost -p 16379
 ```
 
 # 余談
